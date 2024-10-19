@@ -11,7 +11,7 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("pdfgenerator")
-                .packagesToScan("com.freightfox.pdfgenerator.controller")  // Specify your controller package here
+                .packagesToScan("com.freightfox.pdfgenerator.controller")  
                 .pathsToMatch("/**")
                 .build();
     }

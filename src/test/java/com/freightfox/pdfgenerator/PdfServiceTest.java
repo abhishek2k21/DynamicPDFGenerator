@@ -17,33 +17,27 @@ import com.freightfox.pdfgenerator.utils.PdfUtil;
 public class PdfServiceTest {
 
     @Mock
-    private PdfUtil pdfUtil; // Mock the PdfUtil dependency
+    private PdfUtil pdfUtil; 
 
     @InjectMocks
-    private PdfService pdfService; // Inject the PdfService with the mock PdfUtil
+    private PdfService pdfService; 
 
     @BeforeEach
     public void setUp() {
-	// Initialize Mockito annotations before each test
 	MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void testGeneratePdf_NewFile() {
-	// Arrange: Set up a valid PdfRequest
 	PdfRequest request = new PdfRequest();
-	request.setTemplate("invoice.html"); // Provide a valid template for testing
+	request.setTemplate("invoice.html"); 
 
-	// Mock the behavior of PdfUtil to return a valid ByteArrayInputStream
 	when(pdfUtil.createPdfFromTemplate(request)).thenReturn(new ByteArrayInputStream(new byte[0]));
 
-	// Act: Call the generatePdf method
 	ByteArrayInputStream pdfStream = pdfService.generatePdf(request);
 
-	// Assert: Verify the generated PDF stream is not null
 	assertNotNull(pdfStream, "PDF stream should not be null");
 
-	// Optionally, you can add more assertions to check for specific behaviors,
-	// such as validating the size or content of the PDF stream if needed
+	
     }
 }

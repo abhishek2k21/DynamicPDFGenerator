@@ -15,7 +15,6 @@ import com.itextpdf.html2pdf.HtmlConverter;
 public class PdfUtil {
 
     public ByteArrayInputStream createPdfFromTemplate(PdfRequest request) {
-	// Validate the request object
 	if (request == null) {
 	    throw new IllegalArgumentException("PdfRequest cannot be null");
 	}
@@ -32,8 +31,7 @@ public class PdfUtil {
     }
 
     private String getHtmlTemplate(PdfRequest request) {
-	// Load template and populate with request data
-	String name = request.getName() != null ? request.getName() : "Guest"; // Default name if null
+	String name = request.getName() != null ? request.getName() : "Guest"; 
 	return "<html><body><h1>Invoice</h1><p>This is a sample PDF for: " + name + "</p></body></html>";
     }
 }
