@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
-    <h1>Invoice for freightfox <span th:text="${name}"></span></h1>
-    <p>Details go here...</p>
+    <div>
+        <h2>Invoice</h2>
+        <p><strong>Seller:</strong> <span th:text="${seller}"></span></p>
+        <p><strong>Seller GSTIN:</strong> <span th:text="${sellerGstin}"></span></p>
+        <p><strong>Seller Address:</strong> <span th:text="${sellerAddress}"></span></p>
+
+        <p><strong>Buyer:</strong> <span th:text="${buyer}"></span></p>
+        <p><strong>Buyer GSTIN:</strong> <span th:text="${buyerGstin}"></span></p>
+        <p><strong>Buyer Address:</strong> <span th:text="${buyerAddress}"></span></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.quantity}"></td>
+                    <td th:text="${item.rate}"></td>
+                    <td th:text="${item.amount}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

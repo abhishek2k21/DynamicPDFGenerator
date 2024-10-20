@@ -1,4 +1,5 @@
 package com.freightfox.pdfgenerator;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -17,10 +18,10 @@ import com.freightfox.pdfgenerator.utils.PdfUtil;
 public class PdfServiceTest {
 
     @Mock
-    private PdfUtil pdfUtil; 
+    private PdfUtil pdfUtil;
 
     @InjectMocks
-    private PdfService pdfService; 
+    private PdfService pdfService;
 
     @BeforeEach
     public void setUp() {
@@ -28,16 +29,18 @@ public class PdfServiceTest {
     }
 
     @Test
-    public void testGeneratePdf_NewFile() {
+    public void testGeneratePdf_NewFile() throws Exception {
 	PdfRequest request = new PdfRequest();
-	request.setTemplate("invoice.html"); 
+	request.setSeller("Test Seller");
+	request.setBuyer("Test Buyer");
+	request.setTemplate("invoice.html");
 
-	when(pdfUtil.createPdfFromTemplate(request)).thenReturn(new ByteArrayInputStream(new byte[0]));
+	String mockFilePath = "pdfs/Test_Seller_Test_Buyer.pdf";
+
+	when(pdfUtil.createPdfFromTemplate(request)).thenReturn(mockFilePath);
 
 	ByteArrayInputStream pdfStream = pdfService.generatePdf(request);
 
 	assertNotNull(pdfStream, "PDF stream should not be null");
-
-	
     }
 }
