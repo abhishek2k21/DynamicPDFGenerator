@@ -11,6 +11,7 @@ Returns the generated PDF directly in the API response
 Technologies Used
 Spring Boot
 Thymeleaf
+swagger
 Java 21
 SLF4J for logging
 Maven for dependency management
@@ -19,7 +20,7 @@ Maven for dependency management
 Project Structure
 
 
-![image](https://github.com/user-attachments/assets/727f0ab2-710d-456c-9594-0000827dd044)
+![image](https://github.com/user-attachments/assets/2dba8a41-7362-4369-ad0b-892a42cd0ee0)
 
 
 
@@ -75,11 +76,35 @@ The API will be available at:
 bash
 Copy code
 http://localhost:8080/api/pdf/generate
-API Documentation
-For detailed API documentation, visit the Swagger UI:
 
 
 
-bash
-Copy code
-http://localhost:8080/swagger-ui/index.html
+Postman Post method:
+http://localhost:8080/api/pdf/generate-pdf
+
+
+input 
+{
+  "seller": "Seller Name",
+  
+  "sellerGstin": "GSTIN123",
+  
+  "sellerAddress": "Seller Address",
+  
+  "buyer": "Buyer Name",
+  
+  "buyerGstin": "GSTIN456",
+  
+  "buyerAddress": "Buyer Address",
+  
+  "items": [],
+  
+  "template": "invoice.html"
+  
+}
+
+
+Output :[Buyer_Name_1.pdf](https://github.com/user-attachments/files/17449818/Buyer_Name_1.pdf)
+
+
+
